@@ -215,7 +215,7 @@ class RTC extends React.Component{
                 
                 <div id="camera-video" >
                 </div>
-                <div id="remote-stream" >
+                <div id="remote-video" >
                 </div>
 
                 <br/>
