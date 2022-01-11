@@ -162,6 +162,17 @@ class RTC extends React.Component{
 
     joinRoom = () =>{
 
+
+        this.state.client.join({
+            roomId: Number(this.state.roomId),
+        })
+        .catch(error => {
+            console.error('加入房间失败'+error);
+        })
+        .then(()=>{
+            console.log('加入房间成功');
+        });
+
         this.state.client.on('stream-added',event => {
             const remoteStream = event.stream;
             console.log('远端流增加:' + remoteStream.getId());
@@ -173,15 +184,7 @@ class RTC extends React.Component{
             remoteStream.play('remote-video');
         });
 
-        this.state.client.join({
-            roomId: Number(this.state.roomId),
-        })
-        .catch(error => {
-            console.error('加入房间失败'+error);
-        })
-        .then(()=>{
-            console.log('加入房间成功');
-        });
+        
     }
 
     subShareStream = () => {
