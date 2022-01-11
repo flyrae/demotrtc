@@ -149,6 +149,18 @@ class RTC extends React.Component{
         this.setState({localStream,client,sig})
     }
 
+
+    publishLocalStream =  () => {
+        this.state.client
+        .publish(this.state.localStream)
+        .catch(error => {
+            console.error('本地流发布失败 ' + error);
+        })
+        .then(() => {
+            console.log('本地流发布成功');
+        });
+    }
+
     closeLocalStream = async () => {
 
         // this.state.localStream.close();
@@ -214,6 +226,10 @@ class RTC extends React.Component{
                 </button>
                 <button type="button" onClick={this.joinRoom}>
                     加入房间
+                </button>
+
+                <button type="button" onClick={this.publishLocalStream}>
+                    发布本地流
                 </button>
                 
                 <div id="camera-video" >
