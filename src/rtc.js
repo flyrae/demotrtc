@@ -126,7 +126,7 @@ class RTC extends React.Component{
         console.log(cameraList);
         let cameraId = cameraList[0].deviceId;
         const localStream = TRTC.createStream({
-            userId:'test',audio:false,video:true,cameraId,
+            audio:false,video:true,cameraId,
         });
         localStream
         .initialize()
